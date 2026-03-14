@@ -391,7 +391,738 @@
         font-size: 2.1rem;
       }
     }
-  </style>
+  /* ── SHARED BASE ── */
+.etp-section {
+  padding: 64px 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.etp-section-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1d2e;
+  margin-bottom: 8px;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+.etp-section-sub {
+  font-size: 15px;
+  color: #6b7299;
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* ════════════════════════════════
+   SECTION 1 — GET HELP NOW BANNER
+   ════════════════════════════════ */
+.etp-hero-cta {
+  background: linear-gradient(135deg, #1e3a5f 0%, #1d4ed8 100%);
+  padding: 48px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.etp-hero-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 70% 0%, rgba(147,197,253,.15), transparent 60%);
+  pointer-events: none;
+}
+.etp-hero-cta h2 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 10px;
+  letter-spacing: -0.5px;
+}
+.etp-hero-cta h2 span { color: #93c5fd; }
+.etp-hero-cta p {
+  font-size: 15px;
+  color: rgba(255,255,255,.82);
+  margin: 0 auto 28px;
+  max-width: 480px;
+  line-height: 1.6;
+}
+.etp-cta-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.etp-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: #1d4ed8;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 13px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all .2s;
+  font-family: inherit;
+}
+.etp-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.2);
+}
+.etp-btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25d366;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 13px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all .2s;
+}
+.etp-btn-wa:hover {
+  background: #1fb855;
+  transform: translateY(-2px);
+}
+.etp-cta-tags {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.etp-cta-tag {
+  font-size: 12px;
+  color: rgba(255,255,255,.7);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ════════════════════════════════
+   SECTION 2 — PRICING
+   ════════════════════════════════ */
+.etp-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.etp-price-card {
+  background: #f7f8fc;
+  border: 1.5px solid #e4e7f0;
+  border-radius: 14px;
+  padding: 22px 18px;
+  text-align: center;
+  transition: all .2s;
+  position: relative;
+}
+.etp-price-card:hover {
+  border-color: #3b82f6;
+  background: #eff6ff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(59,130,246,.1);
+}
+.etp-price-card.featured {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+.etp-price-card.featured::before {
+  content: 'MOST POPULAR';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #3b82f6;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+.etp-price-icon { font-size: 28px; margin-bottom: 10px; }
+.etp-price-type {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1d2e;
+  margin-bottom: 6px;
+}
+.etp-price-val {
+  font-size: 26px;
+  font-weight: 800;
+  color: #1d4ed8;
+  margin-bottom: 4px;
+  letter-spacing: -0.5px;
+}
+.etp-price-desc {
+  font-size: 11px;
+  color: #6b7299;
+  line-height: 1.5;
+}
+.etp-bundle-box {
+  background: linear-gradient(135deg, #1e3a5f, #1d4ed8);
+  border-radius: 14px;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.etp-bundle-text { color: #fff; }
+.etp-bundle-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.etp-bundle-sub { font-size: 13px; opacity: .8; }
+.etp-bundle-prices {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.etp-bundle-item {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 10px;
+  padding: 10px 16px;
+  text-align: center;
+  color: #fff;
+}
+.etp-bundle-item-val { font-size: 18px; font-weight: 800; color: #93c5fd; }
+.etp-bundle-item-label { font-size: 11px; opacity: .8; margin-top: 2px; }
+.etp-pay-methods {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.etp-pay-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 20px;
+  background: #f7f8fc;
+  border: 1.5px solid #e4e7f0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1d2e;
+}
+
+/* ════════════════════════════════
+   SECTION 3 — HOW IT WORKS
+   ════════════════════════════════ */
+.etp-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0;
+  position: relative;
+}
+.etp-step {
+  text-align: center;
+  padding: 28px 20px;
+  position: relative;
+}
+.etp-step:not(:last-child)::after {
+  content: '→';
+  position: absolute;
+  right: -12px;
+  top: 44px;
+  font-size: 20px;
+  color: #cbd5e1;
+  z-index: 1;
+}
+.etp-step-num {
+  width: 52px;
+  height: 52px;
+  background: #1d4ed8;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 0 auto 16px;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 16px rgba(29,78,216,.25);
+}
+.etp-step-icon { font-size: 24px; margin-bottom: 12px; }
+.etp-step-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1d2e;
+  margin-bottom: 8px;
+}
+.etp-step-desc {
+  font-size: 13px;
+  color: #6b7299;
+  line-height: 1.6;
+}
+.etp-step-time {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1d4ed8;
+  background: #eff6ff;
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+.etp-hiw-cta {
+  text-align: center;
+  margin-top: 36px;
+  padding: 28px;
+  background: #f7f8fc;
+  border-radius: 14px;
+  border: 1.5px solid #e4e7f0;
+}
+.etp-hiw-cta p { font-size: 14px; color: #6b7299; margin-bottom: 14px; }
+
+/* ════════════════════════════════
+   SECTION 4 — TESTIMONIALS
+   ════════════════════════════════ */
+.etp-testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+.etp-tcard {
+  background: #f7f8fc;
+  border: 1.5px solid #e4e7f0;
+  border-radius: 14px;
+  padding: 22px;
+  position: relative;
+  transition: all .2s;
+}
+.etp-tcard:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 4px 20px rgba(59,130,246,.08);
+}
+.etp-tcard-quote {
+  font-size: 36px;
+  color: #3b82f6;
+  line-height: 1;
+  margin-bottom: 10px;
+  opacity: .4;
+}
+.etp-tcard-text {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+.etp-tcard-stars {
+  color: #f59e0b;
+  font-size: 14px;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+.etp-tcard-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.etp-tcard-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  flex-shrink: 0;
+}
+.etp-tcard-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1d2e;
+}
+.etp-tcard-uni {
+  font-size: 11px;
+  color: #6b7299;
+  margin-top: 1px;
+}
+.etp-tcard-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #dcfce7;
+  color: #166534;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 8px;
+}
+
+/* ════════════════════════════════
+   SECTION 5 — STICKY WHATSAPP
+   ════════════════════════════════ */
+.etp-wa-sticky {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+.etp-wa-bubble {
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.15);
+  font-size: 13px;
+  color: #1a1d2e;
+  font-weight: 600;
+  max-width: 220px;
+  line-height: 1.4;
+  border: 1px solid #e4e7f0;
+  animation: etpFadeIn .5s ease 1s both;
+}
+.etp-wa-bubble span { display: block; font-size: 11px; color: #6b7299; margin-top: 2px; font-weight: 400; }
+.etp-wa-btn-float {
+  width: 58px;
+  height: 58px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37,211,102,.4);
+  transition: all .2s;
+  animation: etpFadeIn .3s ease both;
+}
+.etp-wa-btn-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37,211,102,.5);
+}
+@keyframes etpFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .etp-section { padding: 48px 16px; }
+  .etp-hero-cta h2 { font-size: 22px; }
+  .etp-step:not(:last-child)::after { display: none; }
+  .etp-wa-bubble { display: none; } /* hide bubble on mobile, keep button */
+  .etp-bundle-box { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="copy-note">
+  📋 <strong>Instructions:</strong> This file shows previews of all 5 sections. For each section, copy the CSS into your site's &lt;style&gt; tag, and copy the HTML into the right place in your page. Full instructions are in the Word document.
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 1 — GET HELP NOW BANNER
+     Paste this right below your existing hero section
+     ══════════════════════════════════════════════════════════ -->
+<div class="preview-label">SECTION 1 — Get Help Now Banner (paste after your hero)</div>
+<div class="preview-block">
+
+<div class="etp-hero-cta">
+  <h2>Need help with your <span>engineering coursework?</span></h2>
+  <p>Get expert help on assignments, exams, and full courses. We respond within 30 minutes and deliver before your deadline.</p>
+  <div class="etp-cta-buttons">
+    <a href="YOUR_FORM_LINK_HERE" class="etp-btn-primary">
+      🚀 Get Help Now — Submit Request
+    </a>
+    <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" class="etp-btn-wa" target="_blank">
+      💬 WhatsApp Us
+    </a>
+  </div>
+  <div class="etp-cta-tags">
+    <span class="etp-cta-tag">✓ Response in 30 minutes</span>
+    <span class="etp-cta-tag">✓ A-grade results</span>
+    <span class="etp-cta-tag">✓ 8 years experience</span>
+    <span class="etp-cta-tag">✓ All engineering subjects</span>
+  </div>
+</div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 2 — PRICING
+     Paste this after your subjects section
+     ══════════════════════════════════════════════════════════ -->
+<div class="preview-label">SECTION 2 — Pricing (paste after Subjects section)</div>
+<div class="preview-block">
+
+<div class="etp-section">
+  <div class="etp-section-title">💰 Simple, Transparent Pricing</div>
+  <div class="etp-section-sub">No hidden fees. No bargaining. Fixed prices so you know exactly what to expect before you submit.</div>
+
+  <div class="etp-pricing-grid">
+    <div class="etp-price-card">
+      <div class="etp-price-icon">📝</div>
+      <div class="etp-price-type">Assignment</div>
+      <div class="etp-price-val">$20</div>
+      <div class="etp-price-desc">4–5 questions<br>from $30 for longer sets</div>
+    </div>
+    <div class="etp-price-card">
+      <div class="etp-price-icon">🔬</div>
+      <div class="etp-price-type">Lab Report</div>
+      <div class="etp-price-val">$25</div>
+      <div class="etp-price-desc">MATLAB, PSpice<br>LTSpice, Multisim</div>
+    </div>
+    <div class="etp-price-card">
+      <div class="etp-price-icon">✏️</div>
+      <div class="etp-price-type">Quiz / Test</div>
+      <div class="etp-price-val">$30</div>
+      <div class="etp-price-desc">Online quiz<br>up to 30 minutes</div>
+    </div>
+    <div class="etp-price-card featured">
+      <div class="etp-price-icon">🎓</div>
+      <div class="etp-price-type">Midterm Exam</div>
+      <div class="etp-price-val">$60</div>
+      <div class="etp-price-desc">60 min exam<br>$90 for heavy exams</div>
+    </div>
+    <div class="etp-price-card">
+      <div class="etp-price-icon">📋</div>
+      <div class="etp-price-type">Final Exam</div>
+      <div class="etp-price-val">$100</div>
+      <div class="etp-price-desc">120 min exam<br>$120 for complex subjects</div>
+    </div>
+    <div class="etp-price-card">
+      <div class="etp-price-icon">📖</div>
+      <div class="etp-price-type">Full Course</div>
+      <div class="etp-price-val">$450</div>
+      <div class="etp-price-desc">All assignments<br>+ midterm + final</div>
+    </div>
+  </div>
+
+  <!-- Bundle deals -->
+  <div class="etp-bundle-box">
+    <div class="etp-bundle-text">
+      <div class="etp-bundle-title">🎁 Multi-Course Bundle Discounts</div>
+      <div class="etp-bundle-sub">Taking multiple courses this semester? Save more when you bundle.</div>
+    </div>
+    <div class="etp-bundle-prices">
+      <div class="etp-bundle-item">
+        <div class="etp-bundle-item-val">$850</div>
+        <div class="etp-bundle-item-label">2 courses</div>
+      </div>
+      <div class="etp-bundle-item">
+        <div class="etp-bundle-item-val">$1,200</div>
+        <div class="etp-bundle-item-label">3 courses</div>
+      </div>
+      <div class="etp-bundle-item">
+        <div class="etp-bundle-item-val">$1,500</div>
+        <div class="etp-bundle-item-label">4 courses</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment methods -->
+  <div class="etp-pay-methods">
+    <span style="font-size:13px;color:#6b7299;align-self:center">We accept:</span>
+    <div class="etp-pay-badge">💳 Wise</div>
+    <div class="etp-pay-badge">⚡ Zelle</div>
+    <div class="etp-pay-badge">🌐 Remitly</div>
+  </div>
+</div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 3 — HOW IT WORKS
+     Paste this after the pricing section
+     ══════════════════════════════════════════════════════════ -->
+<div class="preview-label">SECTION 3 — How It Works (paste after Pricing)</div>
+<div class="preview-block">
+
+<div class="etp-section" style="background:#f7f8fc">
+  <div class="etp-section-title">⚡ How It Works</div>
+  <div class="etp-section-sub">Three simple steps — from request to delivery. No calls, no complicated process.</div>
+
+  <div class="etp-steps-grid">
+    <div class="etp-step">
+      <div class="etp-step-num">1</div>
+      <div class="etp-step-icon">📋</div>
+      <div class="etp-step-title">Submit your request</div>
+      <div class="etp-step-desc">Fill out our quick form — tell us your course, work type, and deadline. Upload your assignment file.</div>
+      <span class="etp-step-time">⏱ Takes 2 minutes</span>
+    </div>
+    <div class="etp-step">
+      <div class="etp-step-num">2</div>
+      <div class="etp-step-icon">💬</div>
+      <div class="etp-step-title">Get your quote on WhatsApp</div>
+      <div class="etp-step-desc">We review your request and send you a fixed price quote via WhatsApp within 30 minutes.</div>
+      <span class="etp-step-time">⏱ Within 30 minutes</span>
+    </div>
+    <div class="etp-step">
+      <div class="etp-step-num">3</div>
+      <div class="etp-step-icon">✅</div>
+      <div class="etp-step-title">Pay & receive your work</div>
+      <div class="etp-step-desc">Confirm via Wise or Zelle and we deliver high-quality, well-explained solutions before your deadline.</div>
+      <span class="etp-step-time">⏱ Before your deadline</span>
+    </div>
+  </div>
+
+  <div class="etp-hiw-cta">
+    <p>Ready to get started? Submit your first request — it takes less than 2 minutes.</p>
+    <a href="YOUR_FORM_LINK_HERE" class="etp-btn-primary" style="display:inline-flex">
+      🚀 Submit Your Request
+    </a>
+  </div>
+</div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 4 — TESTIMONIALS
+     Paste this after How It Works
+     ══════════════════════════════════════════════════════════ -->
+<div class="preview-label">SECTION 4 — Testimonials (paste after How It Works)</div>
+<div class="preview-block">
+
+<div class="etp-section">
+  <div class="etp-section-title">⭐ What Students Say</div>
+  <div class="etp-section-sub">Over 8 years helping engineering students across the US achieve great results.</div>
+
+  <div class="etp-testimonials-grid">
+
+    <div class="etp-tcard">
+      <div class="etp-tcard-badge">✅ Verified</div>
+      <div class="etp-tcard-quote">"</div>
+      <div class="etp-tcard-text">Got an A on my Signals & Systems midterm. He explained every step clearly — I actually understood the solutions after. Will use again for finals.</div>
+      <div class="etp-tcard-stars">★★★★★</div>
+      <div class="etp-tcard-author">
+        <div class="etp-tcard-avatar" style="background:#3b82f6">AK</div>
+        <div>
+          <div class="etp-tcard-name">Ahmed K.</div>
+          <div class="etp-tcard-uni">Texas A&M University · ECE</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="etp-tcard">
+      <div class="etp-tcard-badge">✅ Verified</div>
+      <div class="etp-tcard-quote">"</div>
+      <div class="etp-tcard-text">Taking 4 courses this semester and needed help with all of them. The bundle price saved me a lot. Fast responses and always on time even for last-minute requests.</div>
+      <div class="etp-tcard-stars">★★★★★</div>
+      <div class="etp-tcard-author">
+        <div class="etp-tcard-avatar" style="background:#8b5cf6">CM</div>
+        <div>
+          <div class="etp-tcard-name">Carlos M.</div>
+          <div class="etp-tcard-uni">University of Houston · EE</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="etp-tcard">
+      <div class="etp-tcard-badge">✅ Verified</div>
+      <div class="etp-tcard-quote">"</div>
+      <div class="etp-tcard-text">My Power Electronics final was at 9:30 AM and he had everything ready. Super professional and the quality was excellent. Highly recommend to all ECE students.</div>
+      <div class="etp-tcard-stars">★★★★★</div>
+      <div class="etp-tcard-author">
+        <div class="etp-tcard-avatar" style="background:#10b981">PS</div>
+        <div>
+          <div class="etp-tcard-name">Priya S.</div>
+          <div class="etp-tcard-uni">UT Dallas · ECE</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="etp-tcard">
+      <div class="etp-tcard-quote">"</div>
+      <div class="etp-tcard-text">LTSpice lab reports were always a pain. He handles them perfectly — correct circuit, right output, well-written report. Best investment for my semester.</div>
+      <div class="etp-tcard-stars">★★★★★</div>
+      <div class="etp-tcard-author">
+        <div class="etp-tcard-avatar" style="background:#f59e0b">JB</div>
+        <div>
+          <div class="etp-tcard-name">John B.</div>
+          <div class="etp-tcard-uni">SMU Dallas · EE</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="etp-tcard">
+      <div class="etp-tcard-quote">"</div>
+      <div class="etp-tcard-text">I was struggling with Electromagnetics all semester. Started getting help for assignments and my grades went from C to A. Clear explanations, fast delivery.</div>
+      <div class="etp-tcard-stars">★★★★★</div>
+      <div class="etp-tcard-author">
+        <div class="etp-tcard-avatar" style="background:#ef4444">MR</div>
+        <div>
+          <div class="etp-tcard-name">Mohammed R.</div>
+          <div class="etp-tcard-uni">Arizona State · EE</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="etp-tcard">
+      <div class="etp-tcard-quote">"</div>
+      <div class="etp-tcard-text">Trusted him with my entire semester — 3 courses. He kept track of every deadline without me reminding him. Stress-free semester, great results. Thank you!</div>
+      <div class="etp-tcard-stars">★★★★★</div>
+      <div class="etp-tcard-author">
+        <div class="etp-tcard-avatar" style="background:#6366f1">SL</div>
+        <div>
+          <div class="etp-tcard-name">Sara L.</div>
+          <div class="etp-tcard-uni">University of Michigan · ECE</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 5 — STICKY WHATSAPP BUTTON
+     Paste this just before your closing </body> tag
+     ══════════════════════════════════════════════════════════ -->
+<div class="preview-label">SECTION 5 — Sticky WhatsApp Button (paste before &lt;/body&gt;)</div>
+<div class="preview-block" style="min-height:160px;position:relative">
+
+<!-- This floats in the bottom-right corner of every page -->
+<div class="etp-wa-sticky">
+  <div class="etp-wa-bubble">
+    💬 Need help right now?
+    <span>Message us on WhatsApp — reply in minutes!</span>
+  </div>
+  <a href="https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hi!%20I%20need%20help%20with%20my%20engineering%20coursework." 
+     class="etp-wa-btn-float" 
+     target="_blank"
+     title="Chat on WhatsApp">
+    💬
+  </a>
+</div>
+
+<div style="padding:40px;font-size:13px;color:#6b7299;max-width:500px">
+  <strong>Note:</strong> This button floats at the bottom-right of every page when you add it before &lt;/body&gt;. 
+  On mobile it shows just the green button. On desktop it shows the bubble message too.
+  Replace <code>YOUR_WHATSAPP_NUMBER</code> with your number in international format (e.g. 919876543210 for India).
+</div>
+
+</div>
+
+</body>
+</html>
+</style>
 </head>
 <body>
   <div class="topbar">
