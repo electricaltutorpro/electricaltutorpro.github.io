@@ -1,31 +1,616 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Electrical Tutor Pro</title>
-<style>
-body{
-font-family:Arial;
-text-align:center;
-background:#f4f6f8;
-}
-h1{
-color:#0a4f8a;
-margin-top:100px;
-}
-p{
-font-size:20px;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ElectricalTutorPro</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --primary: #0b5cab;
+      --primary-dark: #083d73;
+      --accent: #f0b429;
+      --text: #1a2433;
+      --muted: #5f6b7a;
+      --border: #dfe7f1;
+      --shadow: 0 12px 28px rgba(11, 92, 171, 0.10);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.97rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      padding: 64px 0 36px;
+    }
+
+    .hero-wrap {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-card,
+    .panel,
+    .subject-card,
+    .question-card,
+    .contact-card,
+    .footer-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 36px;
+      background: linear-gradient(135deg, #ffffff 0%, #eef5ff 100%);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #e8f1fd;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.84rem;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.12;
+      color: var(--primary-dark);
+    }
+
+    .hero-card p {
+      margin: 0 0 24px;
+      font-size: 1.06rem;
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      border-color: var(--border);
+      color: var(--primary-dark);
+      background: white;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .hero-point {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .hero-point strong {
+      display: block;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+    }
+
+    .side-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 22px;
+    }
+
+    .panel h3,
+    .section h2 {
+      margin: 0 0 12px;
+      color: var(--primary-dark);
+    }
+
+    .panel ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .panel li + li {
+      margin-top: 10px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .mini-box {
+      border: 1px dashed #c4d7ee;
+      border-radius: 14px;
+      padding: 14px;
+      background: #f9fbff;
+    }
+
+    .section {
+      padding: 18px 0 8px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .subjects-grid,
+    .questions-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .subjects-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .questions-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .subject-card,
+    .question-card,
+    .contact-card,
+    .footer-card {
+      padding: 22px;
+    }
+
+    .subject-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: #eaf3ff;
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .subject-card h3,
+    .question-card h3,
+    .contact-card h3 {
+      margin: 0 0 10px;
+      color: var(--primary-dark);
+    }
+
+    .subject-card p,
+    .question-card p,
+    .contact-card p,
+    .footer-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .meta {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f8fbff;
+      border: 1px solid var(--border);
+      font-size: 0.84rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .sample-list {
+      margin-top: 14px;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .sample-list li + li {
+      margin-top: 8px;
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+
+    .footer {
+      padding: 6px 0 36px;
+    }
+
+    .footer-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .small-note {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 940px) {
+      .hero-wrap,
+      .contact-wrap,
+      .subjects-grid,
+      .questions-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-points {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero {
+        padding-top: 38px;
+      }
+
+      .hero-card,
+      .panel,
+      .subject-card,
+      .question-card,
+      .contact-card,
+      .footer-card {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: 2.1rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#home">
+        <span class="brand-mark">⚡</span>
+        <span>ElectricalTutorPro</span>
+      </a>
+      <div class="nav-links">
+        <a href="#subjects">Subjects</a>
+        <a href="#solutions">Solved Problems</a>
+        <a href="#materials">Materials</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
 
-<h1>ElectricalTutorPro</h1>
+  <section class="hero" id="home">
+    <div class="container hero-wrap">
+      <div class="hero-card">
+        <span class="eyebrow">Electrical Engineering Learning Hub</span>
+        <h1>Free tutorials, solved questions, and study help for Electrical Engineering students.</h1>
+        <p>
+          Learn core concepts in a clean and simple way. Find tutorial notes, sample questions,
+          solved problems, and organized study materials in one place.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#solutions">View Solved Problems</a>
+          <a class="btn btn-secondary" href="#subjects">Browse Subjects</a>
+        </div>
+        <div class="hero-points">
+          <div class="hero-point">
+            <strong>Step-by-step solutions</strong>
+            <span class="small-note">Easy explanations for students.</span>
+          </div>
+          <div class="hero-point">
+            <strong>Exam-focused practice</strong>
+            <span class="small-note">Useful for assignments and revision.</span>
+          </div>
+          <div class="hero-point">
+            <strong>Neatly organized topics</strong>
+            <span class="small-note">Quick subject-wise navigation.</span>
+          </div>
+        </div>
+      </div>
 
-<p>Welcome to Electrical Tutor Pro</p>
+      <div class="side-stack">
+        <div class="panel">
+          <h3>What you will find here</h3>
+          <ul>
+            <li>Electrical Engineering tutorial notes</li>
+            <li>Sample exam questions with solutions</li>
+            <li>Important formulas and study materials</li>
+            <li>Future downloadable PDFs and resources</li>
+          </ul>
+        </div>
 
-<p>Free Electrical Engineering Tutorials</p>
+        <div class="panel">
+          <h3>Popular categories</h3>
+          <div class="mini-grid">
+            <div class="mini-box"><strong>Circuit Analysis</strong><br><span class="small-note">Thevenin, Norton, KCL, KVL</span></div>
+            <div class="mini-box"><strong>Signals & Systems</strong><br><span class="small-note">Convolution, Fourier, Laplace</span></div>
+            <div class="mini-box"><strong>Power Systems</strong><br><span class="small-note">Transformers, faults, protection</span></div>
+            <div class="mini-box"><strong>Electronics</strong><br><span class="small-note">Diodes, BJT, amplifiers</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section class="section" id="subjects">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2>Subjects</h2>
+          <p>Organized sections for tutorials, notes, and solved questions.</p>
+        </div>
+      </div>
+
+      <div class="subjects-grid">
+        <div class="subject-card">
+          <div class="subject-icon">C</div>
+          <h3>Circuit Analysis</h3>
+          <p>Basic circuit laws, mesh analysis, nodal analysis, Thevenin and Norton theorem problems.</p>
+          <span class="meta">Core fundamentals</span>
+        </div>
+
+        <div class="subject-card">
+          <div class="subject-icon">S</div>
+          <h3>Signals & Systems</h3>
+          <p>Convolution, Fourier series, Laplace transform, sampling, and time-domain analysis.</p>
+          <span class="meta">Problem solving</span>
+        </div>
+
+        <div class="subject-card">
+          <div class="subject-icon">P</div>
+          <h3>Power Systems</h3>
+          <p>Generation, transmission, transformers, power factor, protection, and fault calculations.</p>
+          <span class="meta">Exam support</span>
+        </div>
+
+        <div class="subject-card">
+          <div class="subject-icon">E</div>
+          <h3>Electronics</h3>
+          <p>Diodes, BJT, MOSFET, amplifiers, rectifiers, and common circuit questions with solutions.</p>
+          <span class="meta">Concept + numericals</span>
+        </div>
+
+        <div class="subject-card">
+          <div class="subject-icon">M</div>
+          <h3>Electromagnetics</h3>
+          <p>Field concepts, Gauss law, boundary conditions, wave propagation, and Maxwell-based questions.</p>
+          <span class="meta">Theory made simple</span>
+        </div>
+
+        <div class="subject-card">
+          <div class="subject-icon">C</div>
+          <h3>Control Systems</h3>
+          <p>Transfer functions, stability, root locus, time response, and system modeling basics.</p>
+          <span class="meta">Step-by-step methods</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="solutions">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2>Solved Problems</h2>
+          <p>Sample structure for neatly posting questions and solutions.</p>
+        </div>
+      </div>
+
+      <div class="questions-grid">
+        <div class="question-card">
+          <h3>Sample Question 1</h3>
+          <p><strong>Topic:</strong> Thevenin Equivalent</p>
+          <ul class="sample-list">
+            <li><strong>Question:</strong> Find the Thevenin equivalent across the load terminals.</li>
+            <li><strong>Step 1:</strong> Remove the load resistor.</li>
+            <li><strong>Step 2:</strong> Calculate open-circuit voltage.</li>
+            <li><strong>Step 3:</strong> Find equivalent resistance.</li>
+            <li><strong>Final Answer:</strong> Write the Thevenin voltage and resistance clearly.</li>
+          </ul>
+        </div>
+
+        <div class="question-card">
+          <h3>Sample Question 2</h3>
+          <p><strong>Topic:</strong> Convolution</p>
+          <ul class="sample-list">
+            <li><strong>Question:</strong> Compute the convolution of two given signals.</li>
+            <li><strong>Step 1:</strong> Write both signals properly.</li>
+            <li><strong>Step 2:</strong> Find overlap intervals.</li>
+            <li><strong>Step 3:</strong> Integrate over the correct limits.</li>
+            <li><strong>Final Answer:</strong> Present the result neatly.</li>
+          </ul>
+        </div>
+
+        <div class="question-card">
+          <h3>Sample Question 3</h3>
+          <p><strong>Topic:</strong> Transformer Efficiency</p>
+          <ul class="sample-list">
+            <li><strong>Question:</strong> Calculate transformer efficiency at a given load.</li>
+            <li><strong>Step 1:</strong> Determine output power.</li>
+            <li><strong>Step 2:</strong> Find iron and copper losses.</li>
+            <li><strong>Step 3:</strong> Use the efficiency formula.</li>
+            <li><strong>Final Answer:</strong> Express efficiency in percentage.</li>
+          </ul>
+        </div>
+
+        <div class="question-card">
+          <h3>Sample Question 4</h3>
+          <p><strong>Topic:</strong> BJT Biasing</p>
+          <ul class="sample-list">
+            <li><strong>Question:</strong> Determine Q-point and circuit currents.</li>
+            <li><strong>Step 1:</strong> Use transistor equations.</li>
+            <li><strong>Step 2:</strong> Calculate base and collector current.</li>
+            <li><strong>Step 3:</strong> Find V<sub>CE</sub>.</li>
+            <li><strong>Final Answer:</strong> State the operating point clearly.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="materials">
+    <div class="container contact-wrap">
+      <div class="contact-card">
+        <h3>Study Materials</h3>
+        <p>
+          You can later add downloadable notes, formula sheets, chapter summaries,
+          and PDF solutions here.
+        </p>
+        <span class="meta">Coming soon</span>
+      </div>
+
+      <div class="contact-card" id="contact">
+        <h3>Contact</h3>
+        <p>
+          For learning support, solved questions, or future tutoring updates, contact:
+          <br><br>
+          <strong>admin@electricaltutorpro.com</strong>
+        </p>
+        <span class="meta">Professional email active</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-card">
+        <div>
+          <div class="footer-brand">ElectricalTutorPro</div>
+          <p>Free Electrical Engineering tutorials, solved questions, and study materials.</p>
+        </div>
+        <div class="small-note">Built with GitHub Pages and custom domain setup.</div>
+      </div>
+    </div>
+  </footer>
 </body>
-
 </html>
